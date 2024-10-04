@@ -4,34 +4,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&led_strip {
-    chain-length = <35>;
-};
+&led_strip { chain-length = <35>; };
 
-&left_encoder {
-    resolution = <2>;
-};
-
+&left_encoder { resolution = <2>; };
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   /   |
-// |  TAB  |  '  |  ,  |  .   |  p   |  y   |                   |  F   |  G    |  C    |  R   |   L   | BKSPC |
-// | ⌃ ESC |  A  |  O  |  E   |  U   |  I   |                   |  D   |  H    |  T    |  N   |   S   |   -   |
-// |  ( ⇧  |  ;  |  Q  |  J   |  K   |  X   |  MUTE  |  |       |  B   |  M    |  w    |  v   |   Z   |  ⇧ )  |
-//               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+            // ------------------------------------------------------------------------------------------------------------
+            // |  `    |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   /   |
+            // |  TAB  |  '  |  ,  |  .   |  p   |  y   |                   |  F   |  G    |  C    |  R   |   L   | BKSPC |
+            // | ⌃ ESC |  A  |  O  |  E   |  U   |  I   |                   |  D   |  H    |  T    |  N   |   S   |   -   |
+            // |  ( ⇧  |  ;  |  Q  |  J   |  K   |  X   |  MUTE  |  |       |  B   |  M    |  w    |  v   |   Z   |  ⇧ )  |
+            //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+
             bindings = <
 &kp GRAVE                   &kp N1         &kp N2            &kp N3      &kp N4            &kp N5                           &kp N6  &kp N7             &kp N8    &kp N9             &kp N0  &kp SLASH
 &kp TAB                     &kp SQT        &kp COMMA         &kp PERIOD  &kp P             &kp Y                            &kp F   &kp G              &kp C     &kp R              &kp L   &kp BACKSPACE
@@ -44,13 +37,14 @@
         };
 
         lower_layer {
-// TODO: Some binds are waiting for shifted keycode support.
-// ------------------------------------------------------------------------------------------------------------
-// |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
-// | `     |   1 |   2 |   3  |   4  |   5  |                   |   6  |   7   |   8   |   9  |    0  |  F12  |
-// |       |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   |   |
-// |       |  =  |  -  |  +   |  {   |  }   |        |  |       |  [   |  ]    |  ;    |  :   |   \   |RGB TOG|
-//               |     |      |      |      |        |  |       |      |       |       |      |
+            // TODO: Some binds are waiting for shifted keycode support.
+            // ------------------------------------------------------------------------------------------------------------
+            // |       |  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |  F7   |  F8   |  F9  |  F10  |  F11  |
+            // | `     |   1 |   2 |   3  |   4  |   5  |                   |   6  |   7   |   8   |   9  |    0  |  F12  |
+            // |       |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   |   |
+            // |       |  =  |  -  |  +   |  {   |  }   |        |  |       |  [   |  ]    |  ;    |  :   |   \   |RGB TOG|
+            //               |     |      |      |      |        |  |       |      |       |       |      |
+
             bindings = <
 &trans     &kp F1     &kp F2     &kp F3       &kp F4    &kp F5                       &kp F6     &kp F7    &kp F8           &kp F9     &kp F10   &kp F11
 &kp GRAVE  &kp N1     &kp N2     &kp N3       &kp N4    &kp N5                       &kp N6     &kp N7    &kp N8           &kp N9     &kp N0    &kp F12
@@ -63,18 +57,19 @@
         };
 
         raise_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
-// |     | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
-// |     | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-// |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
-//              |      |       |       |      |      |  |      |      |      |       |      |
+            // ------------------------------------------------------------------------------------------------------------
+            // |BTCLR| BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
+            // |     | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
+            // |     | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+            // |     | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+            //              |      |       |       |      |      |  |      |      |      |       |      |
+
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4             &trans    &trans    &trans   &trans    &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                   &kp PG_UP &trans    &kp UP   &trans    &kp N0  &trans
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                 &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans  &trans   &trans  &trans    &trans    &trans   &trans    &trans  &trans
-                        &trans       &trans       &trans       &trans  &trans   &trans  &trans    &trans    &trans   &trans
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFR    &rgb_ug RGB_EFF
+&trans      &kp INS       &kp PSCRN     &kp K_CMENU   &trans        &trans                          &kp PG_UP        &kp LA(LEFT)     &kp UP           &kp LA(RIGHT)    &kp LA(BACKSPACE)  &trans
+&trans      &kp LALT      &kp LCTRL     &kp LSHFT     &trans        &kp CLCK                        &kp PG_DN        &kp LEFT         &kp DOWN         &kp RIGHT        &kp DEL            &kp BSPC
+&trans      &kp K_UNDO    &kp K_CUT     &kp K_COPY    &kp K_PASTE   &trans        &trans    &trans  &trans           &trans           &trans           &trans           &trans             &trans
+                          &trans        &trans        &trans        &trans        &trans    &trans  &trans           &trans           &trans           &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
